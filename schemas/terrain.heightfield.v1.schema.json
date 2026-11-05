@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:robust-bipedal:terrain:heightfield:v1",
+  "title": "Custom 2D heightfield for Gymnasium BipedalWalker",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "height_offsets_m"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "terrain.heightfield.v1"
+    },
+    "height_offsets_m": {
+      "type": "array",
+      "minItems": 200,
+      "maxItems": 200,
+      "items": {
+        "type": "number",
+        "minimum": -2,
+        "maximum": 2
+      }
+    }
+  },
+  "description": "Semantic rules also enforced by terrain_geometry.py: first 20 samples flat, max adjacent delta 1.3m, finite values, fixed spacing 14/30m."
+}
